@@ -6,7 +6,7 @@ pipeline {
     stage("Build and Test") {
       steps {
         checkout scm
-        sh "sleep 1000"
+        sleep time: 100, unit: 'seconds'
         sh 'mvn -B -ntp -Dmaven.test.failure.ignore verify'
         junit '**/target/surefire-reports/TEST-*.xml'
       }
